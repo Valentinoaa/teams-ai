@@ -600,7 +600,7 @@ class Application(Bot, Generic[StateT]):
                 context.activity.type == ActivityTypes.invoke
                 and context.activity.name == "message/submitAction"
                 and isinstance(context.activity.value, dict)
-                and context.activity.value.get("actionName") == "feedback"
+                and context.activity.value["actionName"] == "feedback" if context.activity.value else False
             )
 
         def __call__(
